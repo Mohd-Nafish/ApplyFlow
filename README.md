@@ -44,7 +44,7 @@ The app allows users to:
 
 ## Demo
 
-_Add demo video link here_
+[_Demo Video Link_](https://drive.google.com/file/d/1y5fDINij_U6hxlLN404etqhnvTjpbSfV/view?usp=sharing)
 
 ## Installation
 
