@@ -1,50 +1,50 @@
-# Welcome to your Expo app 👋
+# ApplyFlow
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+ApplyFlow is a React Native application built to help users track and manage their job applications efficiently.
 
-## Get started
+The app allows users to:
+- add and manage job applications
+- track application status
+- filter and search applications
+- monitor analytics and progress
+- persist data locally using AsyncStorage
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- Add, edit, and delete job applications
+- Search and filter functionality
+- Application status tracking
+- Analytics dashboard
+- Persistent local storage with AsyncStorage
+- Clean modern mobile UI
+- Built using Expo Router
 
-2. Start the app
+## Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+- React Native
+- Expo
+- TypeScript
+- Expo Router
+- AsyncStorage
 
-In the output, you'll find options to open the app in a
+## Screenshots
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<img width="400" height="800" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-10 at 22 01 46" src="https://github.com/user-attachments/assets/daf366dd-b4c2-45ea-b22a-0a95abb340a9" />
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+<img width="400" height="800" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-10 at 22 06 58" src="https://github.com/user-attachments/assets/bc121f87-3dd8-470d-8e8a-30014a1ceb5b" />
 
-## Get a fresh project
+<img width="400" height="800" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-10 at 22 05 35" src="https://github.com/user-attachments/assets/38a6ddbe-c4eb-4ad6-849d-dca09793c6d4" />
 
-When you're ready, run:
+<img width="400" height="800" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-10 at 22 07 06" src="https://github.com/user-attachments/assets/f560150e-a436-46da-9b20-60f7ed3be5fd" />
+
+
+
+## Demo
+
+_Add demo video link here_
+
+## Installation
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+npx expo start
