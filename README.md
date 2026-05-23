@@ -1,6 +1,6 @@
 # ApplyFlow
 
-<<<<<<< HEAD
+
 ApplyFlow is a cross-platform job application tracker built with Expo and React Native. It helps you manage your application pipeline, visualize progress with analytics, and evaluate resume fit against job descriptions using secure AI-powered analysis.
 
 ---
