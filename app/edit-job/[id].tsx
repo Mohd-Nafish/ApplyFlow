@@ -35,8 +35,8 @@ export default function EditJobScreen() {
         notes: job.notes,
       }}
       onBack={() => router.back()}
-      onSave={(values) => {
-        updateJob(job.id, values);
+      onSave={async (values) => {
+        await updateJob(job.id, values);
         router.back();
       }}
     />

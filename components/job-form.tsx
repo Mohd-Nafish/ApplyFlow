@@ -1,6 +1,8 @@
 import { JobStatus } from '@/context/jobs-context';
 import React, { useMemo, useState } from 'react';
 import {
+    Alert,
+    ActivityIndicator,
     KeyboardAvoidingView,
     Modal,
     Platform,
@@ -29,7 +31,7 @@ type JobFormProps = {
   saveLabel: string;
   initialValues: JobFormValues;
   onBack: () => void;
-  onSave: (values: JobFormValues) => void;
+  onSave: (values: JobFormValues) => void | Promise<void>;
 };
 
 export function JobForm({ title, saveLabel, initialValues, onBack, onSave }: JobFormProps) {
@@ -39,11 +41,38 @@ export function JobForm({ title, saveLabel, initialValues, onBack, onSave }: Job
   const [appliedDate, setAppliedDate] = useState(initialValues.appliedDate);
   const [notes, setNotes] = useState(initialValues.notes);
   const [statusModalVisible, setStatusModalVisible] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const canSave = useMemo(
-    () => company.trim().length > 0 && role.trim().length > 0 && appliedDate.trim().length > 0,
-    [company, role, appliedDate]
+    () =>
+      company.trim().length > 0 &&
+      role.trim().length > 0 &&
+      appliedDate.trim().length > 0 &&
+      !isSaving,
+    [appliedDate, company, isSaving, role]
   );
+
+  const handleSave = async () => {
+    if (!canSave) {
+      return;
+    }
+
+    setIsSaving(true);
+
+    try {
+      await onSave({
+        company: company.trim(),
+        role: role.trim(),
+        status,
+        appliedDate: appliedDate.trim(),
+        notes: notes.trim(),
+      });
+    } catch (error) {
+      Alert.alert('Could not save job', error instanceof Error ? error.message : 'Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -121,17 +150,13 @@ export function JobForm({ title, saveLabel, initialValues, onBack, onSave }: Job
           <TouchableOpacity
             accessibilityRole="button"
             disabled={!canSave}
-            onPress={() =>
-              onSave({
-                company: company.trim(),
-                role: role.trim(),
-                status,
-                appliedDate: appliedDate.trim(),
-                notes: notes.trim(),
-              })
-            }
+            onPress={handleSave}
             style={[styles.saveButton, !canSave && styles.saveButtonDisabled]}>
-            <Text style={styles.saveButtonText}>{saveLabel}</Text>
+            {isSaving ? (
+              <ActivityIndicator color="#FFFFFF" />
+            ) : (
+              <Text style={styles.saveButtonText}>{saveLabel}</Text>
+            )}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>

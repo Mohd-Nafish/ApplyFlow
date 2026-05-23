@@ -1,8 +1,10 @@
 import { JobStatusBadge } from '@/components/job-status-badge';
+import { useAuth } from '@/context/auth-context';
 import { Job, JobStatus, useJobs } from '@/context/jobs-context';
 import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import {
+    Alert,
     FlatList,
     SafeAreaView,
     StatusBar,
@@ -19,6 +21,7 @@ const FILTERS: StatusFilter[] = ['All', 'Applied', 'Interview', 'Offer', 'Reject
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { signOut } = useAuth();
   const { jobs, isLoading, deleteJob } = useJobs();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<StatusFilter>('All');
@@ -61,7 +64,13 @@ export default function HomeScreen() {
           <Text style={styles.actionText}>Edit</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => deleteJob(item.id)}
+          onPress={async () => {
+            try {
+              await deleteJob(item.id);
+            } catch (error) {
+              Alert.alert('Could not delete job', error instanceof Error ? error.message : 'Please try again.');
+            }
+          }}
           style={[styles.actionButton, styles.deleteButton]}>
           <Text style={styles.actionText}>Delete</Text>
         </TouchableOpacity>
@@ -74,7 +83,21 @@ export default function HomeScreen() {
       <StatusBar barStyle="dark-content" />
 
       <View style={styles.header}>
-        <Text style={styles.title}>ApplyFlow</Text>
+        <View style={styles.headerTopRow}>
+          <Text style={styles.title}>ApplyFlow</Text>
+          <TouchableOpacity
+            accessibilityRole="button"
+            onPress={async () => {
+              try {
+                await signOut();
+              } catch (error) {
+                Alert.alert('Could not sign out', error instanceof Error ? error.message : 'Please try again.');
+              }
+            }}
+            style={styles.signOutButton}>
+            <Text style={styles.signOutText}>Sign Out</Text>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.subtitle}>Track your applications in one place</Text>
       </View>
 
@@ -172,10 +195,29 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 8,
   },
+  headerTopRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
   title: {
     fontSize: 30,
     fontWeight: '700',
     color: '#111827',
+  },
+  signOutButton: {
+    borderWidth: 1,
+    borderColor: '#D1D5DB',
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    backgroundColor: '#FFFFFF',
+  },
+  signOutText: {
+    color: '#374151',
+    fontSize: 13,
+    fontWeight: '700',
   },
   subtitle: {
     marginTop: 6,

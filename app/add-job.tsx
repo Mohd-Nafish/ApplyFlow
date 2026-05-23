@@ -19,8 +19,8 @@ export default function AddJobScreen() {
         notes: '',
       }}
       onBack={() => router.back()}
-      onSave={(values) => {
-        addJob(values);
+      onSave={async (values) => {
+        await addJob(values);
         router.back();
       }}
     />
