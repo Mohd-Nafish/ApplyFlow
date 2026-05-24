@@ -174,9 +174,9 @@ npm run lint       # ESLint
 
 ## Screenshots
 
-| Home | Analytics | Resume Match |
-| :---: | :---: | :---: |
-| <img width="240" alt="Home screen" src="https://github.com/user-attachments/assets/1fb94a37-b97f-4dd3-bac4-1c1f0f6a8d55" /> | <img width="240" alt="Analytics screen" src="https://github.com/user-attachments/assets/e7d4eddb-86c4-4e26-a9b2-6867758f3434" /> | <img width="240" alt="Resume Match screen" src="https://github.com/user-attachments/assets/714778fa-cbf9-40f5-b765-430049373ad9" /> |
+| Login | Home | Analytics | Resume Match |
+| :---:| :---: | :---: | :---: |
+| <img width="240" alt="Login screen" src="https://github.com/user-attachments/assets/e9222513-b5af-49bd-a934-d047fdb781e6" /> | <img width="240" alt="Home screen" src="https://github.com/user-attachments/assets/1fb94a37-b97f-4dd3-bac4-1c1f0f6a8d55" /> | <img width="240" alt="Analytics screen" src="https://github.com/user-attachments/assets/e7d4eddb-86c4-4e26-a9b2-6867758f3434" /> | <img width="240" alt="Resume Match screen" src="https://github.com/user-attachments/assets/714778fa-cbf9-40f5-b765-430049373ad9" /> |
 
 ---
 
